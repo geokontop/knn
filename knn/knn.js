@@ -113,5 +113,14 @@ knn.getAccuracy=(dataSet, testSet, fieldsTest, k, fieldType, callback)=>{
 }
 
 
-// Export module
-module.exports = knn;
+
+if (typeof window !== 'undefined') {
+    window.knn = knn;
+  }
+  if (typeof self !== 'undefined') {
+    self.knn = knn;
+  }
+  if (typeof module !== 'undefined') {
+    module.exports = knn;
+  }
+  
