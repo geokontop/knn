@@ -1,0 +1,22 @@
+{
+  "name": "gk-knn",
+  "version": "1.0.2",
+  "description": "A light K-nearest neighbor module created by Georgios Kontopoulos",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geokontop/knn.git"
+  },
+  "keywords": [
+    "knn"
+  ],
+  "author": "Georgios Kontopoulos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geokontop/knn/issues"
+  },
+  "homepage": "https://github.com/geokontop/knn#readme"
+}
