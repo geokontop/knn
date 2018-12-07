@@ -5,7 +5,7 @@
 
 [![npm](https://img.shields.io/npm/dt/gk-knn.js.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
 
-[![npm](https://img.shields.io/npm/v/:scope/:package/:tag.svg/gk-knn.js.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
+[![npm](https://img.shields.io/npm/v/gk-knn.js.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
 
 
 ## About
