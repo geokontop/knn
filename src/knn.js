@@ -4,50 +4,10 @@
  */
 
  // Dependencies
-var path = require('path');
-var fs = require('fs');
-const readline = require('readline');
+var path = require('./helpers');
 
- // Container
- const knn = {};
-
- // Base directory of the csv folder
-knn.baseDir = path.join(__dirname,'/../.data/');
-
-// Read csv
-knn.csvtojsonDatasets=(filename, limit, callback)=>{
-    const trainDataset = [];
-    const testDataset = [];
-
-    const rl = readline.createInterface({
-        input: fs.createReadStream(knn.baseDir+filename),
-        crlfDelay: Infinity
-    });
-    let i=0;
-    let labels={};
-    const jsonArr=[];
-    
-    rl.on('line', (line) => {
-        if(i === 0){
-            labels = line.split(',');
-        }else{
-            item = line.split(',');
-            const temp = {};
-            for(let val in labels){
-                temp[labels[val]] = item[val];
-            }
-            if(Math.random()<limit){
-                trainDataset.push(temp);
-            }else{
-                testDataset.push(temp);
-            }
-            jsonArr.push(temp);
-        }
-        i++;
-    }).on('close',()=>{
-        callback(labels, trainDataset, testDataset);
-    });
-}
+// Container
+const knn = {};
 
 // Get k neighbors in the training sample
 knn.getNeighbors = (dataSet, testInstance, fields, k, callback)=>{
@@ -61,7 +21,7 @@ knn.getNeighbors = (dataSet, testInstance, fields, k, callback)=>{
         return a.dist - b.dist;
     });
     
-    callback(knn.classify(distListed.slice(0,3)));
+    callback(knn.classify(distListed.slice(0,k)));
     
 }
 
@@ -89,7 +49,7 @@ knn.classify=(neighbors)=>{
     }
 
     sortable.sort(function(a, b) {
-        return a[1] - b[1];
+        return b[1] - a[1];
     });
 
     return sortable[0][0];
@@ -98,7 +58,6 @@ knn.classify=(neighbors)=>{
 knn.getAccuracy=(dataSet, testSet, fieldsTest, k, fieldType, callback)=>{
     correct = 0;
     wrong =0;
-    // console.log(testSet)
     for(let testInstance of testSet){
         knn.getNeighbors(dataSet, testInstance, fieldsTest, k, (res)=>{
             if(res===testInstance[fieldType]){
@@ -112,15 +71,4 @@ knn.getAccuracy=(dataSet, testSet, fieldsTest, k, fieldType, callback)=>{
     callback(100*correct/(correct+wrong))
 }
 
-
-
-if (typeof window !== 'undefined') {
-    window.knn = knn;
-  }
-  if (typeof self !== 'undefined') {
-    self.knn = knn;
-  }
-  if (typeof module !== 'undefined') {
-    module.exports = knn;
-  }
-  
+module.exports = knn;

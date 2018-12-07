@@ -1,26 +1,29 @@
 /*
- * Primary file for API
+ * Primary file 
  *
  */
 
- // Dependencies
- const knn = require('./knn/knn');
+const core = require('./src/knn');
 
-// knn.csvtojsonDatasets('iris.csv', 0.67, (labels,trainDataset, testDataset)=>{
-//     // console.log(trainDataset)
-//     knn.getNeighbors(trainDataset,{ a: '6.1', b: '3.0', c: '4.9', d: '1.8', 
-//         type: 'Iris-virginica' },['a','b','c','d'],3,(res)=>{
-//             console.log(res)
-            
-//         })
-// })
+const app = {
+    getAccuracy: require('./src/app/get-accuracy'),
+    getType: require('./src/app/get-type')
+};
+ 
+const knn = {
+    core: core,
+    app: app
+  };
 
-knn.csvtojsonDatasets('iris.csv', 0.67, (labels,trainDataset, testDataset)=>{
-    // console.log(trainDataset)
-    knn.getAccuracy(trainDataset,testDataset,['a','b','c','d'],7,'type',(res)=>{
-            console.log(res)
-        })
-})
-
-
-module.exports = knn;
+  
+  
+  if (typeof window !== 'undefined') {
+    window.knn = knn;
+  }
+  if (typeof self !== 'undefined') {
+    self.knn = knn;
+  }
+  if (typeof module !== 'undefined') {
+    module.exports = knn;
+  }
+  
