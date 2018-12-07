@@ -3,9 +3,7 @@
 
 <img src="" alt="Logo" width=200px/>
 
-[![npm](https://img.shields.io/npm/dt/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
-
-[![npm](https://img.shields.io/npm/v/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
+[![npm](https://img.shields.io/npm/dt/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)[![npm](https://img.shields.io/npm/v/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
 
 
 ## About
