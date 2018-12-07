@@ -3,7 +3,7 @@
 
 <img src="" alt="Logo" width=200px/>
 
-[![npm](https://img.shields.io/npm/dt/brain.js.svg?style=flat-square)](https://npmjs.com/package/brain.js)
+[![npm](https://img.shields.io/npm/dt/brain.js.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
 
 
 ## About
