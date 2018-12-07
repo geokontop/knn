@@ -1,6 +1,6 @@
 {
   "name": "gk-knn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A light K-nearest neighbor module created by Georgios Kontopoulos",
   "main": "index.js",
   "scripts": {
