@@ -73,10 +73,10 @@ describe('knn', function() {
     const filename = 'iris.csv';
     const testInstance = {"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4};
     const except = ['type'];
-    kapa = 1;
-    it('should return the {"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4} type as ', function(done) {
+    kapa = 5;
+    it('should return the {"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4} type as "Iris-versicolor"', function(done) {
       getType(filename, testInstance, except, kapa, (res)=>{
-        assert.equal('Iris-virginica' , res);
+        assert.equal('Iris-versicolor' , res);
         done();
       });
     });
