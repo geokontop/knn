@@ -14,15 +14,14 @@
 ## Table of Contents
 
 - [Examples](#examples)
+    + [Node](#node)
+    + [Browser](#browser)
 - [Usage](#usage)
     + [Node](#node)
     + [Browser](#browser)
 - [Data format](#data-format)
     + [.csv](#.csv)
-    + [Training Options](#training-options)
-    + [Async Training](#async-training)
-- [Methods](#methods)
-- [Failing](#failing)
+    + [JSON](#json)
 
 # Examples
 ## Node
@@ -78,7 +77,7 @@ Download the latest [gk-knn.js for browser]().
 # Data format
 Currently only .csv files are supported. 
 
-##.csv
+## .csv
 The first line should hold label names.
 ```
 sepal_length,sepal_width,petal_length,petal_width,type
@@ -88,9 +87,6 @@ sepal_length,sepal_width,petal_length,petal_width,type
 ...
 ```
 
-
-
-
-# JSON
-
+## JSON
+TODO
 
