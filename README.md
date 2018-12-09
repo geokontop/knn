@@ -25,22 +25,28 @@
 
 # Examples
 ## Node
+The example problem used is iris classification. The dataset iris.csv is saved in data folledr.
+
+The example file is comprised of 150 observations of iris flowers from three different species. There are 4 measurements of given flowers: sepal length, sepal width, petal length and petal width, all in the same unit of centimeters. The predicted attribute is the species type, which is one of setosa, versicolor or virginica.
+
+
 ### getType
-Execute getType with file name, test instance, k and fields to exclude as arguments.
+Execute getType with file name, test instance, k and fields to exclude as arguments, to determine the type of a new instance. We can exclude more fields than just the mandatory excluded "type" field.
 
 ```
-node examples/getType.js 'iris.csv' '{"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4}' 7 ['type']
+node examples/getType.js 'iris.csv' '{"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4}' 7 ['type','sepal_length', 'sepal_width']
 ```
 or with default parameters
 ```
 node examples/getType.js 
 ```
 
+
 ### getAccuracy
-Execute getAccuracy with file name and fields to exclude as arguments.
+Execute getAccuracy with file name and fields to exclude as arguments. In order to determine the classification accuracy, we split the data into training and test datasets in a ratio 67/33. We evaluate each test instance type and compare the result with the actual type. The mean classification accuracy in this problem is approximately 96%. 
 
 ```
-node examples/getAccuracy.js 'iris.csv' ['type','sepal_length', 'sepal_width']
+node examples/getAccuracy.js 'iris.csv' ['type']
 ```
 
 ```
