@@ -20,7 +20,7 @@
     + [Node](#node-usage)
     + [Browser](#browser-usage)
 - [Data format](#data-format)
-    + [.csv](#.csv)
+    + [.csv](#csv)
     + [JSON](#json)
 
 # Examples
@@ -77,7 +77,7 @@ Download the latest [gk-knn.js for browser]().
 # Data format
 Currently only .csv files are supported. 
 
-## .csv
+## csv
 The first line should hold label names.
 ```
 sepal_length,sepal_width,petal_length,petal_width,type
