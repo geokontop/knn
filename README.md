@@ -17,8 +17,8 @@
     + [Node](#node)
     + [Browser](#browser)
 - [Usage](#usage)
-    + [Node](#node)
-    + [Browser](#browser)
+    + [Node](#node1)
+    + [Browser](#browser1)
 - [Data format](#data-format)
     + [.csv](#.csv)
     + [JSON](#json)
@@ -55,7 +55,7 @@ node examples/getAccuracy.js
 TODO
 
 # Usage
-## Node
+## Node{#node1}
 If you have [node](http://nodejs.org/), you can install `gk-knn.js` with [npm](http://npmjs.org):
 
 ```
@@ -69,7 +69,7 @@ yarn add gk-knn.js
 
 At present, the published version of gk-knn.js is approximately 1.0.0.
 
-## Browser
+## Browser{#browser1}
 TODO
 Download the latest [gk-knn.js for browser](). 
 
