@@ -17,15 +17,16 @@
 - [Usage](#usage)
     + [Node](#node)
     + [Browser](#browser)
-- [Training](#training)
-    + [Data format](#data-format)
+- [Data format](#data-format)
+    + [.csv](#.csv)
     + [Training Options](#training-options)
     + [Async Training](#async-training)
 - [Methods](#methods)
 - [Failing](#failing)
 
 # Examples
-## getType
+## Node
+### getType
 Execute getType with file name, test instance, k and fields to exclude as arguments.
 
 ```
@@ -36,7 +37,7 @@ or with default parameters
 node examples/getType.js 
 ```
 
-## getAccuracy
+### getAccuracy
 Execute getAccuracy with file name and fields to exclude as arguments.
 
 ```
@@ -51,10 +52,12 @@ or with default parameters
 node examples/getAccuracy.js 
 ```
 
-# Usage
+## Browser
+TODO
 
-### Node
-If you have [node](http://nodejs.org/), you can install `brain.js` with [npm](http://npmjs.org):
+# Usage
+## Node
+If you have [node](http://nodejs.org/), you can install `gk-knn.js` with [npm](http://npmjs.org):
 
 ```
 npm install gk-knn.js
@@ -67,14 +70,23 @@ yarn add gk-knn.js
 
 At present, the published version of gk-knn.js is approximately 1.0.0.
 
-### Browser
+## Browser
+TODO
 Download the latest [gk-knn.js for browser](). 
 
 
-### Data format
+# Data format
+Currently only .csv files are supported. 
 
-
-
+##.csv
+The first line should hold label names.
+```
+sepal_length,sepal_width,petal_length,petal_width,type
+5.1,3.5,1.4,0.2,Iris-setosa
+4.9,3.0,1.4,0.2,Iris-setosa
+4.7,3.2,1.3,0.2,Iris-setosa
+...
+```
 
 
 
