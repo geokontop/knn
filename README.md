@@ -26,7 +26,7 @@
 
 # Examples
 ## getType
-Example get Type with file name, test instance, k and fields to exclude as arguments.
+Execute getType with file name, test instance, k and fields to exclude as arguments.
 
 ```
 node examples/getType.js 'iris.csv' '{"sepal_length":1,"sepal_width":2,"petal_length":3,"petal_width":4}' 7 ['type']
@@ -37,7 +37,7 @@ node examples/getType.js
 ```
 
 ## getAccuracy
-Example get accuracy with file name and fields to exclude as arguments.
+Execute getAccuracy with file name and fields to exclude as arguments.
 
 ```
 node examples/getAccuracy.js 'iris.csv' ['type','sepal_length', 'sepal_width']
