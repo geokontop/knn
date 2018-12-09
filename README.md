@@ -3,7 +3,7 @@
 
 <img src="" alt="Logo" width=200px/>
 
-[![npm](https://img.shields.io/npm/dt/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js) [![npm](https://img.shields.io/npm/v/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn.js)
+[![npm](https://img.shields.io/npm/dt/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn) [![npm](https://img.shields.io/npm/v/gk-knn.svg?style=flat-square)](https://npmjs.com/package/gk-knn)
 
 
 ## About
@@ -59,15 +59,15 @@ TODO
 If you have [node](http://nodejs.org/), you can install `gk-knn.js` with [npm](http://npmjs.org):
 
 ```
-npm install gk-knn.js
+npm install gk-knn
 ```
 
 Or if you prefer yarn:
 ```
-yarn add gk-knn.js
+yarn add gk-knn
 ```
 
-At present, the published version of gk-knn.js is approximately 1.0.0.
+At present, the published version of gk-knn 1.0.3
 
 ## Browser usage
 TODO
