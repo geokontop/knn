@@ -11,10 +11,10 @@ const knn = {};
 
 // Get k neighbors in the training sample
 knn.getNeighbors = (dataSet, testInstance, except, k, callback)=>{
-    distances = []
+    const distances = []
     // length =
     for(let x in dataSet){
-        dist = knn.euclideanDistance(testInstance, dataSet[x], except);
+        const dist = knn.euclideanDistance(testInstance, dataSet[x], except);
         distances.push({dataSet:dataSet[x], dist: dist})        
     }
     const distListed = distances.sort(function(a, b) {
@@ -37,7 +37,7 @@ knn.euclideanDistance=(data1, data2,except)=>{
 }
 
 knn.classify=(neighbors)=>{
-    classVotes = {};
+    const classVotes = {};
     for(let neighbor of neighbors){
         if(classVotes[neighbor.dataSet.type]){
             classVotes[neighbor.dataSet.type] += 1;
@@ -57,8 +57,8 @@ knn.classify=(neighbors)=>{
 }
 
 knn.getAccuracy=(dataSet, testSet, except, k, fieldType, callback)=>{
-    correct = 0;
-    wrong =0;
+    let correct = 0;
+    let wrong =0;
     for(let testInstance of testSet){
         knn.getNeighbors(dataSet, testInstance, except, k, (res)=>{
             if(res===testInstance[fieldType]){

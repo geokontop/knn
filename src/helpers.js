@@ -27,7 +27,7 @@ helpers.csvtojsonTrainTestSet=(filename, limit, callback)=>{
         if(i === 0){
             labels = line.split(',');
         }else{
-            item = line.split(',');
+            const item = line.split(',');
             const temp = {};
             for(let val in labels){
                 temp[labels[val]] = item[val];
@@ -60,7 +60,7 @@ helpers.csvtojsonDataset=(filename, callback)=>{
         if(i === 0){
             labels = line.split(',');
         }else{
-            item = line.split(',');
+            const item = line.split(',');
             const temp = {};
             for(let val in labels){
                 temp[labels[val]] = item[val];
