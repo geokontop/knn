@@ -10,11 +10,11 @@ var path = require('./helpers');
 const knn = {};
 
 // Get k neighbors in the training sample
-knn.getNeighbors = (dataSet, testInstance, fields, k, callback) => {
+knn.getNeighbors = (dataSet, testInstance, except, k, callback) => {
     distances = [];
     // length =
     for (let x in dataSet) {
-        dist = knn.euclideanDistance(testInstance, dataSet[x], fields);
+        dist = knn.euclideanDistance(testInstance, dataSet[x], except);
         distances.push({ dataSet: dataSet[x], dist: dist });
     }
     const distListed = distances.sort(function (a, b) {
@@ -25,10 +25,12 @@ knn.getNeighbors = (dataSet, testInstance, fields, k, callback) => {
 };
 
 // Evaluate Euclidean distance
-knn.euclideanDistance = (data1, data2, fields) => {
-    distance = 0;
-    for (let field of fields) {
-        distance += Math.pow(data1[field] - data2[field], 2);
+knn.euclideanDistance = (data1, data2, except) => {
+    let distance = 0;
+    for (let field in data1) {
+        if (except.indexOf(field) === -1) {
+            distance += Math.pow(data1[field] - data2[field], 2);
+        }
     }
     return Math.sqrt(distance);
 };
@@ -50,15 +52,14 @@ knn.classify = neighbors => {
     sortable.sort(function (a, b) {
         return b[1] - a[1];
     });
-
     return sortable[0][0];
 };
 
-knn.getAccuracy = (dataSet, testSet, fieldsTest, k, fieldType, callback) => {
+knn.getAccuracy = (dataSet, testSet, except, k, fieldType, callback) => {
     correct = 0;
     wrong = 0;
     for (let testInstance of testSet) {
-        knn.getNeighbors(dataSet, testInstance, fieldsTest, k, res => {
+        knn.getNeighbors(dataSet, testInstance, except, k, res => {
             if (res === testInstance[fieldType]) {
                 correct += 1;
             } else {

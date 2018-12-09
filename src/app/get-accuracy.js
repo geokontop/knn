@@ -2,13 +2,13 @@
 const knn = require('../knn');
 const helpers = require('../helpers');
 
-function getAccuracy(filename){
+function getAccuracy(filename, except, callback){
     helpers.csvtojsonTrainTestSet(filename,0.67, (labels, trainSet, testSet)=>{
-        knn.getAccuracy(trainSet, testSet,labels.slice(0,-1), 3, 'type',(res)=>{
-            console.log('Accuracy ',res)
+
+        knn.getAccuracy(trainSet, testSet, except, 3, 'type',(res)=>{
+            callback(res)
         })
     })
 }
-
 
 module.exports = getAccuracy

@@ -527,14 +527,14 @@ process.umask = function() { return 0; };
 const knn = require('../knn');
 const helpers = require('../helpers');
 
-function getAccuracy(filename){
+function getAccuracy(filename, except, callback){
     helpers.csvtojsonTrainTestSet(filename,0.67, (labels, trainSet, testSet)=>{
-        knn.getAccuracy(trainSet, testSet,labels.slice(0,-1), 3, 'type',(res)=>{
-            console.log('Accuracy ',res)
+
+        knn.getAccuracy(trainSet, testSet, except, 3, 'type',(res)=>{
+            callback(res)
         })
     })
 }
-
 
 module.exports = getAccuracy
 
@@ -543,10 +543,10 @@ module.exports = getAccuracy
 const knn = require('../knn');
 const helpers = require('../helpers');
 
-function getType(filename, testInstance, fields, k){
+function getType(filename, testInstance, except, k, callback){
     helpers.csvtojsonDataset(filename, (labels, dataSet)=>{
-        knn.getNeighbors(dataSet, testInstance, fields, k, (testType)=>{
-            console.log(testType)
+        knn.getNeighbors(dataSet, testInstance, except, k, (testType)=>{
+            callback(testType)
         });
     });
 }
@@ -563,7 +563,7 @@ module.exports = getType
 const helpers = {};
 
 // Base directory of the csv folder
-helpers.baseDir = path.join(__dirname,'/../.data/');
+helpers.baseDir = path.join(__dirname,'/../data/');
 
 // Read csv to create labels, trainSet and testSet
 helpers.csvtojsonTrainTestSet=(filename, limit, callback)=>{
@@ -644,11 +644,11 @@ var path = require('./helpers');
 const knn = {};
 
 // Get k neighbors in the training sample
-knn.getNeighbors = (dataSet, testInstance, fields, k, callback)=>{
+knn.getNeighbors = (dataSet, testInstance, except, k, callback)=>{
     distances = []
     // length =
     for(let x in dataSet){
-        dist = knn.euclideanDistance(testInstance, dataSet[x], fields);
+        dist = knn.euclideanDistance(testInstance, dataSet[x], except);
         distances.push({dataSet:dataSet[x], dist: dist})        
     }
     const distListed = distances.sort(function(a, b) {
@@ -660,10 +660,12 @@ knn.getNeighbors = (dataSet, testInstance, fields, k, callback)=>{
 }
 
 // Evaluate Euclidean distance
-knn.euclideanDistance=(data1, data2, fields)=>{
-    distance = 0;
-    for(let field of fields){
-        distance += Math.pow((data1[field]-data2[field]),2);
+knn.euclideanDistance=(data1, data2,except)=>{
+    let distance = 0;
+    for(let field in data1){
+        if(except.indexOf(field)===-1){
+            distance += Math.pow((data1[field]-data2[field]),2);
+        }        
     }
     return Math.sqrt(distance);
 }
@@ -685,15 +687,14 @@ knn.classify=(neighbors)=>{
     sortable.sort(function(a, b) {
         return b[1] - a[1];
     });
-
     return sortable[0][0];
 }
 
-knn.getAccuracy=(dataSet, testSet, fieldsTest, k, fieldType, callback)=>{
+knn.getAccuracy=(dataSet, testSet, except, k, fieldType, callback)=>{
     correct = 0;
     wrong =0;
     for(let testInstance of testSet){
-        knn.getNeighbors(dataSet, testInstance, fieldsTest, k, (res)=>{
+        knn.getNeighbors(dataSet, testInstance, except, k, (res)=>{
             if(res===testInstance[fieldType]){
                 correct += 1;
             }else{

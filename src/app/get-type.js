@@ -2,10 +2,10 @@
 const knn = require('../knn');
 const helpers = require('../helpers');
 
-function getType(filename, testInstance, fields, k){
+function getType(filename, testInstance, except, k, callback){
     helpers.csvtojsonDataset(filename, (labels, dataSet)=>{
-        knn.getNeighbors(dataSet, testInstance, fields, k, (testType)=>{
-            console.log(testType)
+        knn.getNeighbors(dataSet, testInstance, except, k, (testType)=>{
+            callback(testType)
         });
     });
 }

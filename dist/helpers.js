@@ -8,7 +8,7 @@ const readline = require('readline');
 const helpers = {};
 
 // Base directory of the csv folder
-helpers.baseDir = path.join(__dirname, '/../.data/');
+helpers.baseDir = path.join(__dirname, '/../data/');
 
 // Read csv to create labels, trainSet and testSet
 helpers.csvtojsonTrainTestSet = (filename, limit, callback) => {
